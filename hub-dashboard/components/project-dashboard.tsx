@@ -11,6 +11,7 @@ import {
   Layers3,
 } from "lucide-react";
 
+import { AssetBrowser, type AssetFile } from "@/components/asset-browser";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 type Task = {
@@ -50,6 +51,7 @@ type HubData = {
   generatedAt: string;
   sourceUpdated: string;
   projects: Project[];
+  assetFiles?: AssetFile[];
 };
 
 const statusStyles: Record<string, string> = {
@@ -92,6 +94,7 @@ function Metric({ label, value }: { label: string; value: number }) {
 }
 
 export function ProjectDashboard({ data }: { data: HubData }) {
+  const [view, setView] = useState<"projects" | "assets">("projects");
   const [selectedId, setSelectedId] = useState(data.projects[0]?.id ?? "");
   const selected =
     data.projects.find((project) => project.id === selectedId) ??
@@ -142,6 +145,38 @@ export function ProjectDashboard({ data }: { data: HubData }) {
           </div>
         </header>
 
+        <nav
+          className="mb-5 inline-flex rounded-xl border border-slate-200 bg-white p-1 shadow-sm"
+          aria-label="Dashboard views"
+        >
+          <button
+            type="button"
+            onClick={() => setView("projects")}
+            aria-current={view === "projects" ? "page" : undefined}
+            className={`flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 ${
+              view === "projects"
+                ? "bg-slate-950 text-white"
+                : "text-slate-600 hover:bg-slate-50 hover:text-slate-950"
+            }`}
+          >
+            <FolderKanban className="h-4 w-4" aria-hidden="true" />
+            Projects
+          </button>
+          <button
+            type="button"
+            onClick={() => setView("assets")}
+            aria-current={view === "assets" ? "page" : undefined}
+            className={`flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 ${
+              view === "assets"
+                ? "bg-slate-950 text-white"
+                : "text-slate-600 hover:bg-slate-50 hover:text-slate-950"
+            }`}
+          >
+            <Archive className="h-4 w-4" aria-hidden="true" />
+            Assets
+          </button>
+        </nav>
+
         <section
           className="mb-5 grid grid-cols-3 gap-3"
           aria-label="Hub summary"
@@ -151,174 +186,178 @@ export function ProjectDashboard({ data }: { data: HubData }) {
           <Metric label="Assets" value={totals.assets} />
         </section>
 
-        <div className="grid gap-5 lg:grid-cols-[320px_minmax(0,1fr)]">
-          <aside className="rounded-3xl border border-slate-200 bg-slate-950 p-3 text-white shadow-xl shadow-slate-900/10 lg:sticky lg:top-6 lg:self-start">
-            <div className="flex items-center gap-2 px-3 py-3 text-sm font-semibold text-slate-300">
-              <FolderKanban className="h-4 w-4" aria-hidden="true" />
-              Projects
-            </div>
-            <nav className="space-y-2" aria-label="Projects">
-              {data.projects.map((project) => {
-                const isSelected = project.id === selected.id;
-                return (
-                  <button
-                    type="button"
-                    key={project.id}
-                    onClick={() => setSelectedId(project.id)}
-                    className={`w-full rounded-2xl border p-4 text-left transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300 ${
-                      isSelected
-                        ? "border-teal-400/60 bg-teal-400/15"
-                        : "border-white/10 bg-white/[0.04] hover:border-white/20 hover:bg-white/[0.08]"
-                    }`}
-                    aria-current={isSelected ? "page" : undefined}
-                  >
-                    <div className="mb-2 flex items-start justify-between gap-3">
-                      <span className="font-semibold leading-5">
-                        {project.name}
-                      </span>
-                      <span
-                        className={`mt-1 h-2.5 w-2.5 shrink-0 rounded-full ${
-                          project.status === "done"
-                            ? "bg-emerald-400"
-                            : "bg-amber-400"
-                        }`}
-                        aria-label={`Status: ${readableStatus(project.status)}`}
-                      />
-                    </div>
-                    <p className="line-clamp-2 text-sm leading-5 text-slate-400">
-                      {project.purpose}
-                    </p>
-                    <div className="mt-3 flex gap-3 text-xs text-slate-400">
-                      <span>{project.tasks.length} tasks</span>
-                      <span>{project.assets.length} assets</span>
-                    </div>
-                  </button>
-                );
-              })}
-            </nav>
-          </aside>
-
-          <section className="min-w-0 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm shadow-slate-950/[0.04]">
-            <div className="border-b border-slate-200 bg-[radial-gradient(circle_at_top_right,rgba(13,148,136,0.13),transparent_45%)] p-5 sm:p-7">
-              <div className="mb-3 flex flex-wrap items-center gap-3">
-                <StatusBadge status={selected.status} />
-                <span className="font-mono text-xs text-slate-500">
-                  {selected.id}
-                </span>
+        {view === "projects" ? (
+          <div className="grid gap-5 lg:grid-cols-[320px_minmax(0,1fr)]">
+            <aside className="rounded-3xl border border-slate-200 bg-slate-950 p-3 text-white shadow-xl shadow-slate-900/10 lg:sticky lg:top-6 lg:self-start">
+              <div className="flex items-center gap-2 px-3 py-3 text-sm font-semibold text-slate-300">
+                <FolderKanban className="h-4 w-4" aria-hidden="true" />
+                Projects
               </div>
-              <h2 className="max-w-4xl text-2xl font-semibold tracking-tight sm:text-3xl">
-                {selected.name}
-              </h2>
-              <p className="mt-3 max-w-4xl text-base leading-7 text-slate-600">
-                {selected.purpose}
-              </p>
-              <div className="mt-5 rounded-2xl border border-slate-200/80 bg-white/80 p-4 backdrop-blur-sm">
-                <p className="mb-2 text-xs font-bold uppercase tracking-[0.12em] text-slate-500">
-                  Current state
+              <nav className="space-y-2" aria-label="Projects">
+                {data.projects.map((project) => {
+                  const isSelected = project.id === selected.id;
+                  return (
+                    <button
+                      type="button"
+                      key={project.id}
+                      onClick={() => setSelectedId(project.id)}
+                      className={`w-full rounded-2xl border p-4 text-left transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300 ${
+                        isSelected
+                          ? "border-teal-400/60 bg-teal-400/15"
+                          : "border-white/10 bg-white/[0.04] hover:border-white/20 hover:bg-white/[0.08]"
+                      }`}
+                      aria-current={isSelected ? "page" : undefined}
+                    >
+                      <div className="mb-2 flex items-start justify-between gap-3">
+                        <span className="font-semibold leading-5">
+                          {project.name}
+                        </span>
+                        <span
+                          className={`mt-1 h-2.5 w-2.5 shrink-0 rounded-full ${
+                            project.status === "done"
+                              ? "bg-emerald-400"
+                              : "bg-amber-400"
+                          }`}
+                          aria-label={`Status: ${readableStatus(project.status)}`}
+                        />
+                      </div>
+                      <p className="line-clamp-2 text-sm leading-5 text-slate-400">
+                        {project.purpose}
+                      </p>
+                      <div className="mt-3 flex gap-3 text-xs text-slate-400">
+                        <span>{project.tasks.length} tasks</span>
+                        <span>{project.assets.length} assets</span>
+                      </div>
+                    </button>
+                  );
+                })}
+              </nav>
+            </aside>
+
+            <section className="min-w-0 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm shadow-slate-950/[0.04]">
+              <div className="border-b border-slate-200 bg-[radial-gradient(circle_at_top_right,rgba(13,148,136,0.13),transparent_45%)] p-5 sm:p-7">
+                <div className="mb-3 flex flex-wrap items-center gap-3">
+                  <StatusBadge status={selected.status} />
+                  <span className="font-mono text-xs text-slate-500">
+                    {selected.id}
+                  </span>
+                </div>
+                <h2 className="max-w-4xl text-2xl font-semibold tracking-tight sm:text-3xl">
+                  {selected.name}
+                </h2>
+                <p className="mt-3 max-w-4xl text-base leading-7 text-slate-600">
+                  {selected.purpose}
                 </p>
-                <p className="text-sm leading-6 text-slate-700">
-                  {selected.currentState[0] ||
-                    "No current-state summary recorded."}
-                </p>
+                <div className="mt-5 rounded-2xl border border-slate-200/80 bg-white/80 p-4 backdrop-blur-sm">
+                  <p className="mb-2 text-xs font-bold uppercase tracking-[0.12em] text-slate-500">
+                    Current state
+                  </p>
+                  <p className="text-sm leading-6 text-slate-700">
+                    {selected.currentState[0] ||
+                      "No current-state summary recorded."}
+                  </p>
+                </div>
               </div>
-            </div>
 
-            <Tabs defaultValue="tasks" className="p-4 sm:p-7">
-              <TabsList className="mb-5 grid h-auto w-full grid-cols-2 bg-slate-100 p-1 sm:w-[360px]">
-                <TabsTrigger value="tasks" className="gap-2 py-2.5">
-                  <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
-                  Tasks ({selected.tasks.length})
-                </TabsTrigger>
-                <TabsTrigger value="assets" className="gap-2 py-2.5">
-                  <Archive className="h-4 w-4" aria-hidden="true" />
-                  Assets ({selected.assets.length})
-                </TabsTrigger>
-              </TabsList>
+              <Tabs defaultValue="tasks" className="p-4 sm:p-7">
+                <TabsList className="mb-5 grid h-auto w-full grid-cols-2 bg-slate-100 p-1 sm:w-[360px]">
+                  <TabsTrigger value="tasks" className="gap-2 py-2.5">
+                    <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
+                    Tasks ({selected.tasks.length})
+                  </TabsTrigger>
+                  <TabsTrigger value="assets" className="gap-2 py-2.5">
+                    <Archive className="h-4 w-4" aria-hidden="true" />
+                    Assets ({selected.assets.length})
+                  </TabsTrigger>
+                </TabsList>
 
-              <TabsContent value="tasks" className="space-y-3">
-                {selected.tasks.map((task) => (
-                  <article
-                    key={task.id}
-                    className="rounded-2xl border border-slate-200 p-4 transition hover:border-slate-300 hover:shadow-sm sm:p-5"
-                  >
-                    <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                <TabsContent value="tasks" className="space-y-3">
+                  {selected.tasks.map((task) => (
+                    <article
+                      key={task.id}
+                      className="rounded-2xl border border-slate-200 p-4 transition hover:border-slate-300 hover:shadow-sm sm:p-5"
+                    >
+                      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                        <div className="min-w-0">
+                          <div className="mb-2 flex flex-wrap items-center gap-2">
+                            <span className="font-mono text-xs font-bold text-teal-700">
+                              {task.id}
+                            </span>
+                            <span className="text-xs text-slate-400">
+                              {task.group}
+                            </span>
+                          </div>
+                          <h3 className="text-base font-semibold leading-6 sm:text-lg">
+                            {task.title}
+                          </h3>
+                          {task.outcome && (
+                            <p className="mt-2 max-w-4xl text-sm leading-6 text-slate-600">
+                              {task.outcome}
+                            </p>
+                          )}
+                        </div>
+                        <StatusBadge status={task.status} />
+                      </div>
+                      {(task.priority || task.dependsOn) && (
+                        <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 border-t border-slate-100 pt-3 text-xs text-slate-500">
+                          {task.priority && (
+                            <span>Priority: {task.priority}</span>
+                          )}
+                          {task.dependsOn && (
+                            <span>Depends on: {task.dependsOn}</span>
+                          )}
+                        </div>
+                      )}
+                    </article>
+                  ))}
+                </TabsContent>
+
+                <TabsContent value="assets" className="space-y-3">
+                  {selected.assets.map((asset) => (
+                    <article
+                      key={asset.id}
+                      className="grid gap-3 rounded-2xl border border-slate-200 p-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:p-5"
+                    >
                       <div className="min-w-0">
                         <div className="mb-2 flex flex-wrap items-center gap-2">
+                          <FileText
+                            className="h-4 w-4 text-teal-700"
+                            aria-hidden="true"
+                          />
                           <span className="font-mono text-xs font-bold text-teal-700">
-                            {task.id}
+                            {asset.id}
                           </span>
-                          <span className="text-xs text-slate-400">
-                            {task.group}
-                          </span>
+                          <StatusBadge status={asset.status} />
                         </div>
-                        <h3 className="text-base font-semibold leading-6 sm:text-lg">
-                          {task.title}
+                        <h3 className="font-semibold text-slate-900">
+                          {asset.label}
                         </h3>
-                        {task.outcome && (
-                          <p className="mt-2 max-w-4xl text-sm leading-6 text-slate-600">
-                            {task.outcome}
-                          </p>
-                        )}
+                        <p className="mt-1 text-sm leading-6 text-slate-600">
+                          {asset.purpose}
+                        </p>
+                        <p className="mt-3 break-all font-mono text-xs text-slate-400">
+                          {asset.path}
+                        </p>
                       </div>
-                      <StatusBadge status={task.status} />
-                    </div>
-                    {(task.priority || task.dependsOn) && (
-                      <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 border-t border-slate-100 pt-3 text-xs text-slate-500">
-                        {task.priority && (
-                          <span>Priority: {task.priority}</span>
-                        )}
-                        {task.dependsOn && (
-                          <span>Depends on: {task.dependsOn}</span>
-                        )}
-                      </div>
-                    )}
-                  </article>
-                ))}
-              </TabsContent>
-
-              <TabsContent value="assets" className="space-y-3">
-                {selected.assets.map((asset) => (
-                  <article
-                    key={asset.id}
-                    className="grid gap-3 rounded-2xl border border-slate-200 p-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:p-5"
-                  >
-                    <div className="min-w-0">
-                      <div className="mb-2 flex flex-wrap items-center gap-2">
-                        <FileText
-                          className="h-4 w-4 text-teal-700"
+                      <div className="flex items-start gap-2 text-xs text-slate-500 sm:text-right">
+                        <Clock3
+                          className="h-3.5 w-3.5 sm:hidden"
                           aria-hidden="true"
                         />
-                        <span className="font-mono text-xs font-bold text-teal-700">
-                          {asset.id}
-                        </span>
-                        <StatusBadge status={asset.status} />
+                        <div>
+                          <p>{asset.updated}</p>
+                          <p className="mt-1 max-w-[220px]">{asset.source}</p>
+                        </div>
                       </div>
-                      <h3 className="font-semibold text-slate-900">
-                        {asset.label}
-                      </h3>
-                      <p className="mt-1 text-sm leading-6 text-slate-600">
-                        {asset.purpose}
-                      </p>
-                      <p className="mt-3 break-all font-mono text-xs text-slate-400">
-                        {asset.path}
-                      </p>
-                    </div>
-                    <div className="flex items-start gap-2 text-xs text-slate-500 sm:text-right">
-                      <Clock3
-                        className="h-3.5 w-3.5 sm:hidden"
-                        aria-hidden="true"
-                      />
-                      <div>
-                        <p>{asset.updated}</p>
-                        <p className="mt-1 max-w-[220px]">{asset.source}</p>
-                      </div>
-                    </div>
-                  </article>
-                ))}
-              </TabsContent>
-            </Tabs>
-          </section>
-        </div>
+                    </article>
+                  ))}
+                </TabsContent>
+              </Tabs>
+            </section>
+          </div>
+        ) : (
+          <AssetBrowser files={data.assetFiles ?? []} />
+        )}
 
         <footer className="mt-6 flex flex-col gap-1 border-t border-slate-200 pt-4 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between">
           <span className="flex items-center gap-1.5">
