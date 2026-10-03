@@ -1,0 +1,201 @@
+{
+  "browser": "148.0.7778.96",
+  "sha256": "5f7a28c8734aa3f0599d6498c5df9a76ca1f66e85fca632672a9e586912e89c4",
+  "viewports": [
+    {
+      "viewport": 1440,
+      "scrollWidth": 1440,
+      "heading": "Make strong decisions from fragmented evidence",
+      "headingHeight": 165.875,
+      "headingLineHeight": "82.944px",
+      "summaryGap": 30,
+      "overflowElements": [],
+      "h1Count": 1,
+      "tabs": [
+        {
+          "tag": "A",
+          "text": "What it is",
+          "outline": "solid",
+          "outlineWidth": "3px"
+        },
+        {
+          "tag": "A",
+          "text": "How it works",
+          "outline": "solid",
+          "outlineWidth": "3px"
+        },
+        {
+          "tag": "A",
+          "text": "Your audit trail",
+          "outline": "solid",
+          "outlineWidth": "3px"
+        },
+        {
+          "tag": "A",
+          "text": "Start a decision",
+          "outline": "solid",
+          "outlineWidth": "3px"
+        },
+        {
+          "tag": "A",
+          "text": "Start with your decision →",
+          "outline": "solid",
+          "outlineWidth": "3px"
+        },
+        {
+          "tag": "A",
+          "text": "Start with your decision →",
+          "outline": "solid",
+          "outlineWidth": "3px"
+        },
+        {
+          "tag": "A",
+          "text": "Explore the six forms",
+          "outline": "solid",
+          "outlineWidth": "3px"
+        },
+        {
+          "tag": "SUMMARY",
+          "text": "Reviewer provenance (exclude from participant copy)",
+          "outline": "auto",
+          "outlineWidth": "1px"
+        }
+      ],
+      "detailsOpened": true,
+      "anchor": {
+        "hash": "#what",
+        "targetTop": -0.5
+      }
+    },
+    {
+      "viewport": 600,
+      "scrollWidth": 600,
+      "heading": "Make strong decisions from fragmented evidence",
+      "headingHeight": 86.375,
+      "headingLineHeight": "43.2px",
+      "summaryGap": 30,
+      "overflowElements": [],
+      "h1Count": 1,
+      "tabs": [
+        {
+          "tag": "A",
+          "text": "What it is",
+          "outline": "solid",
+          "outlineWidth": "3px"
+        },
+        {
+          "tag": "A",
+          "text": "How it works",
+          "outline": "solid",
+          "outlineWidth": "3px"
+        },
+        {
+          "tag": "A",
+          "text": "Your audit trail",
+          "outline": "solid",
+          "outlineWidth": "3px"
+        },
+        {
+          "tag": "A",
+          "text": "Start a decision",
+          "outline": "solid",
+          "outlineWidth": "3px"
+        },
+        {
+          "tag": "A",
+          "text": "Start with your decision →",
+          "outline": "solid",
+          "outlineWidth": "3px"
+        },
+        {
+          "tag": "A",
+          "text": "Start with your decision →",
+          "outline": "solid",
+          "outlineWidth": "3px"
+        },
+        {
+          "tag": "A",
+          "text": "Explore the six forms",
+          "outline": "solid",
+          "outlineWidth": "3px"
+        },
+        {
+          "tag": "SUMMARY",
+          "text": "Reviewer provenance (exclude from participant copy)",
+          "outline": "auto",
+          "outlineWidth": "1px"
+        }
+      ],
+      "detailsOpened": true,
+      "anchor": {
+        "hash": "#what",
+        "targetTop": -0.125
+      }
+    },
+    {
+      "viewport": 390,
+      "scrollWidth": 390,
+      "heading": "Make strong decisions from fragmented evidence",
+      "headingHeight": 172.75,
+      "headingLineHeight": "43.2px",
+      "summaryGap": 30,
+      "overflowElements": [],
+      "h1Count": 1,
+      "tabs": [
+        {
+          "tag": "A",
+          "text": "What it is",
+          "outline": "solid",
+          "outlineWidth": "3px"
+        },
+        {
+          "tag": "A",
+          "text": "How it works",
+          "outline": "solid",
+          "outlineWidth": "3px"
+        },
+        {
+          "tag": "A",
+          "text": "Your audit trail",
+          "outline": "solid",
+          "outlineWidth": "3px"
+        },
+        {
+          "tag": "A",
+          "text": "Start a decision",
+          "outline": "solid",
+          "outlineWidth": "3px"
+        },
+        {
+          "tag": "A",
+          "text": "Start with your decision →",
+          "outline": "solid",
+          "outlineWidth": "3px"
+        },
+        {
+          "tag": "A",
+          "text": "Start with your decision →",
+          "outline": "solid",
+          "outlineWidth": "3px"
+        },
+        {
+          "tag": "A",
+          "text": "Explore the six forms",
+          "outline": "solid",
+          "outlineWidth": "3px"
+        },
+        {
+          "tag": "SUMMARY",
+          "text": "Reviewer provenance (exclude from participant copy)",
+          "outline": "auto",
+          "outlineWidth": "1px"
+        }
+      ],
+      "detailsOpened": true,
+      "anchor": {
+        "hash": "#what",
+        "targetTop": -0.15625
+      }
+    }
+  ]
+}

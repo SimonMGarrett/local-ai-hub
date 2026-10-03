@@ -1,0 +1,437 @@
+{
+  "generatedAt": "2026-10-03T07:26:44.852Z",
+  "sourceUpdated": "2026-10-03",
+  "projects": [
+    {
+      "id": "paperclip-migration",
+      "name": "Shared hub setup and Paperclip migration",
+      "purpose": "Preserve Paperclip state, connect local agent pointers and validate explicit herdr assignments",
+      "status": "done",
+      "repository": "Hub repository only",
+      "currentState": [
+        "Overall status: done; all four hub setup, migration and handover tasks are complete.",
+        "Completed: hub installation, Paperclip and Linear source snapshots, one reconciled MOSAIC project, tasks/comments/documents/attachments and agent-setting exclusion.",
+        "Completed: end-to-end Herdr dispatch validation with Codex 0.160.0.",
+        "Paperclip was reachable without login. One organization was inventoried: SHERIDAN+BAIRNS (source ID 8ee81b47-0030-4cee-ac57-0fb6f0ae78d7).",
+        "Official export preview generated at 2026-10-02T13:58:27Z and preserved as MIG-003.",
+        "Imported project: mosaic-onboarding; Paperclip contributes one project, three tasks, 64 comments, 29 documents and 27 hash-verified attachments. Linear adds one initiative, one project, nine issues, nine comments and seven documents.",
+        "Every exported agent enables dangerouslyBypassApprovalsAndSandbox: true. Simon approved continuing while excluding those settings; they remain archival and inactive. Paperclip remains unchanged.",
+        "Global Codex/Claude pointers and herdr integrations are installed. Fresh Codex instruction discovery succeeded; Claude pointer content was verified.",
+        "Simon authorized read-only Linear and Paperclip extraction on 2026-10-02/03. Linear and Paperclip records were read but not modified.",
+        "Next action: none for this migration project. Continue MOSAIC product work only through the separately registered mosaic-onboarding task state.",
+        "Claims: HUB-002 and HUB-003 completed by local Codex session /root; HUB-004 executed by Herdr agent hub004_validator and independently verified by local Codex session /root at 2026-10-03T00:23:22+0100. Updated: 2026-10-03."
+      ],
+      "tasks": [
+        {
+          "id": "HUB-001",
+          "title": "Create the shared hub",
+          "status": "done",
+          "group": "Tasks",
+          "outcome": "PROJECTS.md, TASKS, indexed ASSETS, shared instructions and templates.",
+          "priority": "",
+          "dependsOn": "",
+          "assignee": ""
+        },
+        {
+          "id": "HUB-002",
+          "title": "Install and connect local agents",
+          "status": "done",
+          "group": "Tasks",
+          "outcome": "install at ~/Documents/AI-WORK without overwriting existing content; add hub pointers to existing local Codex and Claude instructions.",
+          "priority": "",
+          "dependsOn": "",
+          "assignee": ""
+        },
+        {
+          "id": "HUB-003",
+          "title": "Export and migrate Paperclip state",
+          "status": "done",
+          "group": "Tasks",
+          "outcome": "migrate available companies/projects, goals, issues, dependencies, comments/decisions, attachments and relevant agent setup, preserving source IDs.",
+          "priority": "",
+          "dependsOn": "",
+          "assignee": ""
+        },
+        {
+          "id": "HUB-004",
+          "title": "Validate a herdr-controlled handover",
+          "status": "done",
+          "group": "Tasks",
+          "outcome": "one real assignment resumes from a migrated task and records its result.",
+          "priority": "",
+          "dependsOn": "HUB-002, HUB-003",
+          "assignee": "completed by Herdr agent hub004_validator; independently verified by local Codex session /root at 2026-10-03T00:23:22+0100."
+        }
+      ],
+      "assets": [
+        {
+          "id": "MIG-001",
+          "label": "MIGRATION.md",
+          "path": "ASSETS/paperclip-migration/MIGRATION.md",
+          "purpose": "Export scope, mappings and reconciliation requirements",
+          "creator": "Codex",
+          "updated": "2026-10-01",
+          "status": "draft",
+          "source": "Conversation / HUB-003"
+        },
+        {
+          "id": "MIG-002",
+          "label": "SOURCE-STATUS.md",
+          "path": "ASSETS/paperclip-migration/SOURCE-STATUS.md",
+          "purpose": "Source access, safety exclusions and remaining limitations",
+          "creator": "Codex",
+          "updated": "2026-10-02",
+          "status": "reviewed",
+          "source": "Observed migration / HUB-003"
+        },
+        {
+          "id": "MIG-003",
+          "label": "export preview",
+          "path": "ASSETS/paperclip-migration/source/sheridan-bairns-2026-10-02/export-preview.json",
+          "purpose": "Exact official Paperclip export-preview response",
+          "creator": "Paperclip",
+          "updated": "2026-10-02",
+          "status": "source",
+          "source": "SHERIDAN+BAIRNS / HUB-003"
+        },
+        {
+          "id": "MIG-004",
+          "label": "extracted export",
+          "path": "ASSETS/paperclip-migration/source/sheridan-bairns-2026-10-02/export",
+          "purpose": "Path-safe extraction of all 73 exported files",
+          "creator": "Local Codex migration",
+          "updated": "2026-10-02",
+          "status": "source",
+          "source": "SHERIDAN+BAIRNS / HUB-003"
+        },
+        {
+          "id": "MIG-005",
+          "label": "RECONCILIATION.md",
+          "path": "ASSETS/paperclip-migration/RECONCILIATION.md",
+          "purpose": "Counts, validation, omissions and safety exclusions",
+          "creator": "Local Codex migration",
+          "updated": "2026-10-02",
+          "status": "reviewed",
+          "source": "HUB-003"
+        },
+        {
+          "id": "MIG-006",
+          "label": "HERDR-INTEGRATION.md",
+          "path": "ASSETS/paperclip-migration/HERDR-INTEGRATION.md",
+          "purpose": "Global pointers, installed hooks, dispatch mechanism and completed validation",
+          "creator": "Local Codex migration",
+          "updated": "2026-10-03",
+          "status": "reviewed",
+          "source": "HUB-002 / HUB-004"
+        },
+        {
+          "id": "MIG-007",
+          "label": "current source snapshot",
+          "path": "ASSETS/paperclip-migration/source/sheridan-bairns-2026-10-03",
+          "purpose": "Fresh official export plus goals, decisions, activity, run and per-issue API records",
+          "creator": "Paperclip / Local Codex migration",
+          "updated": "2026-10-03",
+          "status": "source",
+          "source": "SHERIDAN+BAIRNS / HUB-003"
+        },
+        {
+          "id": "MIG-008",
+          "label": "HERDR-HANDOVER-VALIDATION.md",
+          "path": "ASSETS/paperclip-migration/HERDR-HANDOVER-VALIDATION.md",
+          "purpose": "Durable evidence of the selective HUB-004 resume and resumable parent handover",
+          "creator": "Herdr agent hub004_validator / local Codex verification",
+          "updated": "2026-10-03",
+          "status": "verified",
+          "source": "HUB-004"
+        }
+      ]
+    },
+    {
+      "id": "mosaic-onboarding",
+      "name": "MOSAIC proposition and adoption",
+      "purpose": "Finalize the reviewed website package, then gather reader evidence without publishing unapproved work",
+      "status": "in_progress",
+      "repository": "Local path unresolved; Linear references grounds-to-act-mosaic",
+      "currentState": [
+        "Status: active; Paperclip SHE-3 is in_progress and Linear project P-MOS-3 is In Progress.",
+        "Current outcome: the MOSAIC baseline v0.2 is complete. The v0.6 website implementation, design review and Oracle accuracy review passed for founder review, but founder acceptance and production approval are not recorded.",
+        "Linear outcome: make the proposition understandable, compelling and ready for testing. Four issues are done; MOS-5, MOS-6 and MOS-7 are Todo; MOS-8 and MOS-9 are initiative/team Backlog items.",
+        "Next action: prepare the bounded SHE-3 founder-review package and explicitly decide whether founder review precedes the MOS-5 reader-comprehension test. The two source systems do not record that cross-system ordering.",
+        "Blockers: the canonical local repository path remains unresolved. The last two SHE-3 runs failed with a terminal limit error; no founder acceptance or reader-test result is recorded.",
+        "Claims: none.",
+        "Updated: 2026-10-03 from Linear MCP and the current Paperclip API/export snapshot generated 2026-10-02T23:00:30.091Z."
+      ],
+      "tasks": [
+        {
+          "id": "SHE-1",
+          "title": "Paperclip onboarding",
+          "status": "done",
+          "group": "Tasks",
+          "outcome": "approved an Oracle-led MOSAIC baseline and a dependent website and comprehension-test workstream.",
+          "priority": "medium; source parent for SHE-2 and SHE-3",
+          "dependsOn": "none",
+          "assignee": "source assignee chief-of-staff; no hub claim"
+        },
+        {
+          "id": "SHE-2",
+          "title": "Establish the MOSAIC knowledge base",
+          "status": "done",
+          "group": "Tasks",
+          "outcome": "established the founder-reviewed MOSAIC baseline v0.2 with provenance, glossary, worked example, FAQ and open-question record.",
+          "priority": "medium; child of SHE-1",
+          "dependsOn": "none",
+          "assignee": "source assignee the-oracle; no hub claim"
+        },
+        {
+          "id": "SHE-3",
+          "title": "Prepare a clearer MOSAIC website and comprehension test",
+          "status": "in_progress",
+          "group": "Tasks",
+          "outcome": "deliver a founder-reviewable MOSAIC website package and bounded comprehension-test protocol without publishing or claiming measured benefit.",
+          "priority": "medium; child of SHE-1",
+          "dependsOn": "SHE-2 (satisfied in the source)",
+          "assignee": "source assignee chief-of-staff; no hub claim"
+        },
+        {
+          "id": "MOS-1",
+          "title": "Reconcile deployed insight images with version-controlled source",
+          "status": "done",
+          "group": "Linear tasks",
+          "outcome": "",
+          "priority": "No priority; project e28979de-6960-4d97-8c2d-0ed697cd0cb0",
+          "dependsOn": "",
+          "assignee": "source assignee unassigned; no hub claim"
+        },
+        {
+          "id": "MOS-2",
+          "title": "Review the MOSAIC Mandala and choose the next 1–3 outcomes",
+          "status": "done",
+          "group": "Linear tasks",
+          "outcome": "",
+          "priority": "No priority; initiative/team backlog",
+          "dependsOn": "",
+          "assignee": "source assignee Simon MJ Garrett; no hub claim"
+        },
+        {
+          "id": "MOS-3",
+          "title": "Assess the Codie Sanchez 6M insights for MOSAIC",
+          "status": "done",
+          "group": "Linear tasks",
+          "outcome": "",
+          "priority": "No priority; initiative/team backlog",
+          "dependsOn": "",
+          "assignee": "source assignee Simon MJ Garrett; no hub claim"
+        },
+        {
+          "id": "MOS-4",
+          "title": "Verify Linear and GitHub connectivity for grounds-to-act-mosaic",
+          "status": "done",
+          "group": "Linear tasks",
+          "outcome": "",
+          "priority": "No priority; initiative/team backlog",
+          "dependsOn": "",
+          "assignee": "source assignee Simon MJ Garrett; no hub claim"
+        },
+        {
+          "id": "MOS-5",
+          "title": "Run the first MOSAIC reader-comprehension test",
+          "status": "todo",
+          "group": "Linear tasks",
+          "outcome": "",
+          "priority": "No priority; project e28979de-6960-4d97-8c2d-0ed697cd0cb0",
+          "dependsOn": "",
+          "assignee": "source assignee Simon MJ Garrett; no hub claim"
+        },
+        {
+          "id": "MOS-6",
+          "title": "Handle tied explanations honestly in Structure + Analysis",
+          "status": "todo",
+          "group": "Linear tasks",
+          "outcome": "",
+          "priority": "No priority; project e28979de-6960-4d97-8c2d-0ed697cd0cb0",
+          "dependsOn": "",
+          "assignee": "source assignee Simon MJ Garrett; no hub claim"
+        },
+        {
+          "id": "MOS-7",
+          "title": "Use different AI models so one is checking the results of the other (for sense, and self-validating)",
+          "status": "todo",
+          "group": "Linear tasks",
+          "outcome": "",
+          "priority": "Low; project e28979de-6960-4d97-8c2d-0ed697cd0cb0",
+          "dependsOn": "",
+          "assignee": "source assignee unassigned; no hub claim"
+        },
+        {
+          "id": "MOS-8",
+          "title": "Audit MOSAIC’s zero-click discovery surfaces using reader language",
+          "status": "todo",
+          "group": "Linear tasks",
+          "outcome": "",
+          "priority": "Medium; initiative/team backlog",
+          "dependsOn": "",
+          "assignee": "source assignee Simon MJ Garrett; no hub claim"
+        },
+        {
+          "id": "MOS-9",
+          "title": "Run a four-week zero-click discovery pilot for one validated MOSAIC insight",
+          "status": "todo",
+          "group": "Linear tasks",
+          "outcome": "",
+          "priority": "Low; initiative/team backlog",
+          "dependsOn": "",
+          "assignee": "source assignee Simon MJ Garrett; no hub claim"
+        }
+      ],
+      "assets": [
+        {
+          "id": "MOS-SRC-001",
+          "label": "source-metadata.json",
+          "path": "ASSETS/mosaic-onboarding/source-metadata.json",
+          "purpose": "Source project/task mapping and excluded agent-setting flags",
+          "creator": "Local Codex migration",
+          "updated": "2026-10-02",
+          "status": "source",
+          "source": "Paperclip export / HUB-003"
+        },
+        {
+          "id": "MOS-SRC-002",
+          "label": "comments.json",
+          "path": "ASSETS/mosaic-onboarding/comments.json",
+          "purpose": "All 64 exported comments with task, author and timestamp metadata",
+          "creator": "Paperclip export",
+          "updated": "2026-10-02",
+          "status": "source",
+          "source": "SHE-1–SHE-3"
+        },
+        {
+          "id": "MOS-DOC-001",
+          "label": "documents.json",
+          "path": "ASSETS/mosaic-onboarding/documents.json",
+          "purpose": "Item-level index for 29 migrated task documents",
+          "creator": "Local Codex migration",
+          "updated": "2026-10-02",
+          "status": "source",
+          "source": "SHE-1–SHE-3"
+        },
+        {
+          "id": "MOS-DOC-002",
+          "label": "documents",
+          "path": "ASSETS/mosaic-onboarding/documents",
+          "purpose": "Original exported Markdown documents grouped by source issue ID",
+          "creator": "Paperclip export",
+          "updated": "2026-10-02",
+          "status": "source",
+          "source": "SHE-1–SHE-3"
+        },
+        {
+          "id": "MOS-ATT-001",
+          "label": "attachments.json",
+          "path": "ASSETS/mosaic-onboarding/attachments.json",
+          "purpose": "Item-level index with 27 source UUIDs, filenames, sizes and SHA-256 hashes",
+          "creator": "Local Codex migration",
+          "updated": "2026-10-02",
+          "status": "source",
+          "source": "SHE-2–SHE-3"
+        },
+        {
+          "id": "MOS-ATT-002",
+          "label": "attachments",
+          "path": "ASSETS/mosaic-onboarding/attachments",
+          "purpose": "Verified attachment bytes under collision-free filenames",
+          "creator": "Paperclip export",
+          "updated": "2026-10-02",
+          "status": "source",
+          "source": "SHE-2–SHE-3"
+        },
+        {
+          "id": "MOS-SNAP-001",
+          "label": "raw export",
+          "path": "ASSETS/paperclip-migration/source/sheridan-bairns-2026-10-02/export-preview.json",
+          "purpose": "Exact official export-preview response",
+          "creator": "Paperclip",
+          "updated": "2026-10-02",
+          "status": "source",
+          "source": "HUB-003"
+        },
+        {
+          "id": "MOS-SNAP-002",
+          "label": "current Paperclip snapshot",
+          "path": "ASSETS/paperclip-migration/source/sheridan-bairns-2026-10-03",
+          "purpose": "Current export plus goals, decisions, activity, runs and per-issue API records",
+          "creator": "Paperclip",
+          "updated": "2026-10-03",
+          "status": "source",
+          "source": "HUB-003"
+        },
+        {
+          "id": "MOS-LIN-001",
+          "label": "Linear source snapshot",
+          "path": "ASSETS/linear-migration/source/2026-10-03/linear-snapshot.json",
+          "purpose": "One initiative, one project, nine issues, nine comments and seven documents",
+          "creator": "Linear MCP",
+          "updated": "2026-10-03",
+          "status": "source",
+          "source": "I-1 / P-MOS-3 / MOS-1–MOS-9"
+        },
+        {
+          "id": "MOS-LIN-002",
+          "label": "Linear issue extracts",
+          "path": "ASSETS/linear-migration/issues",
+          "purpose": "Readable source-preserving issue descriptions",
+          "creator": "Linear MCP",
+          "updated": "2026-10-03",
+          "status": "source",
+          "source": "MOS-1–MOS-9"
+        },
+        {
+          "id": "MOS-LIN-003",
+          "label": "Linear document extracts",
+          "path": "ASSETS/linear-migration/documents",
+          "purpose": "Readable strategic and research documents",
+          "creator": "Linear MCP",
+          "updated": "2026-10-03",
+          "status": "source",
+          "source": "MOSAIC Adoption"
+        }
+      ]
+    },
+    {
+      "id": "ai-work-dashboard",
+      "name": "AI-WORK project ledger",
+      "purpose": "Provide a local frontend for browsing registered projects, tasks and indexed assets",
+      "status": "done",
+      "repository": "hub-dashboard",
+      "currentState": [
+        "Overall status: done; the local Tailwind frontend reads generated project, task and asset data from this hub.",
+        "Completed: responsive project selection, task and asset views, status summaries, local data generation, lint, production build and browser interaction checks.",
+        "Next action: none. Publishing requires separate approval.",
+        "Claims: completed by local Codex session /root on 2026-10-03."
+      ],
+      "tasks": [
+        {
+          "id": "DASH-001",
+          "title": "Build the project ledger frontend",
+          "status": "done",
+          "group": "Tasks",
+          "outcome": "a responsive Tailwind dashboard for navigating current projects, their tasks and indexed assets.",
+          "priority": "",
+          "dependsOn": "none",
+          "assignee": ""
+        }
+      ],
+      "assets": [
+        {
+          "id": "DASH-001",
+          "label": "frontend source",
+          "path": "hub-dashboard",
+          "purpose": "Tailwind project, generated hub snapshot and build tooling",
+          "creator": "Local Codex",
+          "updated": "2026-10-03",
+          "status": "local",
+          "source": "DASH-001"
+        }
+      ]
+    }
+  ]
+}
